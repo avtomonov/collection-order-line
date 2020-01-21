@@ -1,0 +1,151 @@
+{% if hide_sort %}
+{% assign sort_attr = 'hidden' %}
+{% endif %}
+
+{% if hide_page_size %}
+{% assign page_size_attr = 'hidden' %}
+{% endif %}
+
+<form class="collection-order-wrapper row flex-middle" action="{{ collection.url }}" method="get">
+
+  <div class="collection-order is-order cell-6 cell-12-sm" {{ sort_attr }}>
+
+    {% comment %}<label class="label-field">{{ messages.label_sort }}</label>{% endcomment %}
+
+    <select class="slct js-filter-trigger hide" name="order" >
+      {{ "" | select_option: order, "Дате добавления" }}
+      {{ "price"  | select_option: order, "По возрастанию цены" }}
+      {{ "descending_price"  | select_option: order, "По убыванию цены" }}
+      {{ "title"  | select_option: order, "Алфавиту А-Я" }}
+      {{ "descending_title"  | select_option: order, "Алфавиту Я-А" }}
+      {{ "age"  | select_option: order, "Дате добавления Новые-Старые" }}
+      {{ "descending_age"  | select_option: order, "Дате добавления Старые-Новые" }}
+      {{ "discount"  | select_option: order, "Скидке (%) маленькая-большая" }}
+      {{ "descending_discount"  | select_option: order, "Скидке (%) большая-маленькая" }}
+      {{ "popularity"  | select_option: order, "По популярности" }}
+    </select>
+
+
+    <div class="custom-sort" data-custom-sort="popularity" data-custom-resort="" >
+      <div class="value">
+        <div>По популярности</div>
+        <div class="change">
+          <svg class="icon up">
+            <use xlink:href="#up"></use>
+          </svg>
+          <svg class="icon down">
+            <use xlink:href="#down"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-sort" data-custom-sort="price"  data-custom-resort="descending_price">
+      <div class="value">
+        <div>По цене</div>
+        <div class="change">
+          <svg class="icon up">
+            <use xlink:href="#up"></use>
+          </svg>
+          <svg class="icon down">
+            <use xlink:href="#down"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-sort" data-custom-sort="age" data-custom-resort="descending_age">
+      <div class="value">
+        <div>По новизне</div>
+        <div class="change">
+          <svg class="icon up">
+            <use xlink:href="#up"></use>
+          </svg>
+          <svg class="icon down">
+            <use xlink:href="#down"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="collection-order is-page-size cell-6 cell-12-sm" {{ page_size_attr }}>
+
+    <label class="label-field">{{ messages.label_limit }}</label>
+
+    {% include "page_sizes", page_steps: '7,24,96', input_type: 'radio' %}
+
+  </div>
+
+  {% include "filter_fields" %}
+
+</form>
+
+
+{% assign hide_sort = nil %}
+{% assign sort_class = nil %}
+{% assign hide_page_size = nil %}
+{% assign page_size_class = nil %}
+
+
+
+<div style="display: none;">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <symbol version="1.1" id="up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 15 13" style="enable-background:new 0 0 15 13;" xml:space="preserve">
+    <path  d="M435.5,412.5"/>
+    <path  d="M823.5,24.5"/>
+    <path  d="M435.5-363.5"/>
+    <path  d="M823.5,24.5"/>
+    <path  d="M435.5,412.5"/>
+    <path  d="M435.5-363.5"/>
+    <path  d="M14.9,7.1C14.9,7.1,14.9,7.1,14.9,7.1C15,6.9,15,6.7,15,6.5c0,0,0,0,0,0c0-0.2,0-0.4-0.1-0.5c0,0,0,0,0,0
+    c-0.1-0.2-0.2-0.4-0.3-0.5l-5-5C9.3,0.1,8.9,0,8.5,0C8.1,0,7.7,0.1,7.4,0.4C6.8,1,6.8,2,7.4,2.6L9.9,5H4l0,0H1.4C0.6,5,0,5.7,0,6.5
+    C0,7.3,0.6,8,1.4,8h1.1l0,0h7.4l-2.4,2.4c-0.6,0.6-0.6,1.5,0,2.1c0.6,0.6,1.5,0.6,2.1,0l5-5C14.7,7.4,14.8,7.3,14.9,7.1z"/>
+  </symbol>
+
+  <symbol version="1.1" id="down" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 15 13" style="enable-background:new 0 0 15 13;" xml:space="preserve">
+  <path  d="M435.5,412.5"/>
+  <path  d="M823.5,24.5"/>
+  <path  d="M435.5-363.5"/>
+  <path  d="M823.5,24.5"/>
+  <path  d="M435.5,412.5"/>
+  <path  d="M435.5-363.5"/>
+  <path  d="M14.9,7.1C14.9,7.1,14.9,7.1,14.9,7.1C15,6.9,15,6.7,15,6.5c0,0,0,0,0,0c0-0.2,0-0.4-0.1-0.5c0,0,0,0,0,0
+  c-0.1-0.2-0.2-0.4-0.3-0.5l-5-5C9.3,0.1,8.9,0,8.5,0C8.1,0,7.7,0.1,7.4,0.4C6.8,1,6.8,2,7.4,2.6L9.9,5H4l0,0H1.4C0.6,5,0,5.7,0,6.5
+  C0,7.3,0.6,8,1.4,8h1.1l0,0h7.4l-2.4,2.4c-0.6,0.6-0.6,1.5,0,2.1c0.6,0.6,1.5,0.6,2.1,0l5-5C14.7,7.4,14.8,7.3,14.9,7.1z"/>
+  </symbol>
+
+
+  </svg>
+</div>
+
+
+
+<script>
+
+if ($('[name="order"]').length) {
+    var id = $('[name="order"]').val();
+    $('[data-custom-sort="'+ id +'"]').addClass('active');
+    $('[data-custom-resort="'+ id +'"]').addClass('active-re');
+}
+
+$('[data-custom-sort]').click(function(){
+    if($(this).hasClass('active')){
+       var id = $(this).data('custom-resort');
+       $('[name="order"]').find('[value="'+ id +'"]').prop('selected', true).change();     
+    }else{
+        var id = $(this).data('custom-sort');
+        $('[name="order"]').find('[value="'+ id +'"]').prop('selected', true).change();
+    }
+})
+
+if ($('.left-bar-catalog').innerHeight() <= $(window).innerHeight()) {
+    $('.left-bar-catalog').addClass('sticky-bar')
+}
+
+</script>

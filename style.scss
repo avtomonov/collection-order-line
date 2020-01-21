@@ -1,0 +1,81 @@
+.collection-order {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.custom-sort {
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    &:hover {
+        .value {
+            color: #97a8b1;
+        }
+    }
+    .change {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+        .icon {
+            width: 5px;
+            height: 9px;
+        }
+    }
+    .value {
+        border: 1px solid #c6c5c0;
+        border-radius: 20px;
+        color: #c6c5c0;
+        font-family: "Proxima Nova";
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        /* Text style for "по популяр" */
+        letter-spacing: 0.6px;
+        padding: 5px 20px;
+        padding-bottom: 4px;
+        text-align: center;
+        display: flex;
+        img {
+            margin-left: 10px;
+        }
+    }
+    .items {
+        position: absolute;
+        top: 100%;
+        background: #fff;
+        z-index: 1000;
+        padding: 5px 10px;
+        border: 1px solid #97a8b1;
+    }
+}
+
+.filter-toggle {
+    cursor: pointer;
+}
+
+.custom-sort {
+    &.active {
+        .value {
+            color: #97a8b1;
+            border: 1px solid #97a8b1;
+        }
+        .down {
+            fill: #0f1833;
+        }
+    }
+    &.active-re {
+        .value {
+            color: #97a8b1;
+            border: 1px solid #97a8b1;
+        }
+        .up {
+            fill: #0f1833;
+        }
+    }
+}
